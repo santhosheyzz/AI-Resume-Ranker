@@ -1,4 +1,4 @@
-# 🚀 AI Resume Ranker
+#  AI Resume Ranker
 
 An AI-powered Resume Analyzer designed for technical hiring teams.  
 Built with **FastAPI**, **LangChain/NLP**, and a simple **web UI**, it allows users to:
