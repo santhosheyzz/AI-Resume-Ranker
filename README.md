@@ -1,9 +1,8 @@
-<<<<<<< HEAD
-# 🤖 Enhanced AI-Powered Resume Matcher v2.0
+# Enhanced AI-Powered Resume Matcher v2.0
 
 A powerful NLP and AI tool that matches resumes against job descriptions using **Google Cloud Vision API**, **Gemini AI**, **BM25**, and **FAISS** for comprehensive candidate evaluation.
 
-## ✨ Features
+## Features
 
 ✅ **Multi-format Support**: Upload PDF, DOCX, and image files (JPG, PNG)  
 ✅ **Google Cloud Vision OCR**: Extract text from scanned documents and images  
@@ -14,7 +13,7 @@ A powerful NLP and AI tool that matches resumes against job descriptions using *
 ✅ **Skills Extraction**: Automatically identify technical skills and experience  
 ✅ **Smart Recommendations**: AI-powered hiring suggestions with reasoning  
 
-## 🆕 What's New in v2.0
+## What's New in v2.0
 
 - **Google Cloud Vision Integration**: OCR support for images and scanned PDFs
 - **Gemini AI Analysis**: Deep contextual understanding beyond keyword matching
@@ -22,7 +21,7 @@ A powerful NLP and AI tool that matches resumes against job descriptions using *
 - **Detailed AI Insights**: Strengths, concerns, and hiring recommendations
 - **Improved UI**: Better visualization and user experience
 
-## ⚙️ Tech Stack
+## Tech Stack
 
 - **Python** 🐍 (Streamlit for UI)
 - **Google Cloud Vision API** for OCR text extraction
@@ -33,7 +32,7 @@ A powerful NLP and AI tool that matches resumes against job descriptions using *
 - **Matplotlib & Pandas** for visualization and data processing
 - **PyPDF2, python-docx** for document parsing
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -62,6 +61,8 @@ pip install -r requirements.txt
 # Download spaCy language model
 python -m spacy download en_core_web_sm
 ```
+
+![alt text](https://github.com/santhosheyzz/AI-Resume-Ranker/blob/f6a3c21471e560b4cac84b5b8acea222c6c14431/Photos/Photos/WhatsApp%20Image%202025-10-31%20at%2011.18.01_ff306837.jpg) 
 
 ### Configuration
 
@@ -106,6 +107,8 @@ streamlit run app.py
 ```
 
 The application will open in your default browser at `http://localhost:8501`
+## Photos Gallery
+![alt text](https://github.com/santhosheyzz/AI-Resume-Ranker/blob/f6a3c21471e560b4cac84b5b8acea222c6c14431/Photos/photo-collage.png.png)
 
 ## 📖 Usage Guide
 
@@ -133,6 +136,9 @@ The application will display:
 - **Visual Charts**: Color-coded bar charts
 - **Excel Export**: Downloadable comprehensive report
 
+
+## Aricheture
+![alt text](https://github.com/santhosheyzz/AI-Resume-Ranker/blob/f6a3c21471e560b4cac84b5b8acea222c6c14431/Photos/Archture.jpg)
 ## 📊 Scoring System
 
 The application uses a **triple-model ensemble** approach:
