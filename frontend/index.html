@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Securitix - AI Resume Analyzer</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+
+    <!-- Locomotive Scroll - Commented out for better performance -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script> -->
+
+    <!-- Chart.js for visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <!-- Spline 3D Background -->
+    <div class="spline-background">
+        <!-- Spline 3D scene - Comment out if causing loading issues -->
+        <!-- <iframe src='https://my.spline.design/untitled-7e035c2b44059f89149a0ab94cd07e0e/' frameborder='0' width='100%' height='100%'></iframe> -->
+    </div>
+    
+    <!-- Floating Particles -->
+    <div class="particles-container" id="particles"></div>
+    
+    <!-- Main Container -->
+    <div class="main-container" data-scroll-container>
+        
+        <!-- Navigation -->
+        <nav class="glass-nav">
+            <div class="nav-content">
+                <div class="logo">
+                    <span class="logo-icon">🤖</span>
+                    <span class="logo-text">Securitix</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#hero" class="nav-link">Home</a>
+                    <a href="analytics.html" class="nav-link">Analytics</a>
+                    <a href="#architecture" class="nav-link">Architecture</a>
+                    <a href="#footer" class="nav-link">Contact</a>
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section" data-scroll-section>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-glow"></span>
+                    <span class="badge-text">Powered by Gemini AI</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    <span class="title-line">Securitix</span>
+                    <span class="title-line gradient-text">Intelligent Resume Analyzer</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    AI-powered screening using <span class="highlight">Gemini</span>, 
+                    <span class="highlight">FAISS</span> & <span class="highlight">BM25</span>
+                </p>
+                
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" id="tryDemoBtn">
+                        <span class="btn-glow"></span>
+                        <span class="btn-text">Try Demo</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                    <button class="btn btn-secondary" id="viewArchBtn">
+                        <span class="btn-text">View Architecture</span>
+                        <span class="btn-icon">📊</span>
+                    </button>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">99.2%</div>
+                        <div class="stat-label">Accuracy</div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <div class="stat-value">3x</div>
+                        <div class="stat-label">Faster Screening</div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <div class="stat-value">AI</div>
+                        <div class="stat-label">Powered Analysis</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Floating Orbs -->
+            <div class="floating-orb orb-1"></div>
+            <div class="floating-orb orb-2"></div>
+            <div class="floating-orb orb-3"></div>
+        </section>
+        
+        <!-- Upload & Analyze Section -->
+        <section id="upload" class="upload-section" data-scroll-section>
+            <div class="section-header">
+                <h2 class="section-title">Start Analysis</h2>
+                <p class="section-subtitle">Upload resumes and job description to begin AI-powered matching</p>
+            </div>
+            
+            <div class="upload-container">
+                <!-- Job Description Input -->
+                <div class="glass-card job-description-card">
+                    <div class="card-header">
+                        <span class="card-icon">📝</span>
+                        <h3 class="card-title">Job Description</h3>
+                    </div>
+                    <textarea 
+                        id="jobDescription" 
+                        class="job-description-input" 
+                        placeholder="Paste the complete job description here...&#10;&#10;Include:&#10;• Required skills and qualifications&#10;• Experience requirements&#10;• Job responsibilities&#10;• Preferred qualifications"
+                        rows="12"
+                    ></textarea>
+                </div>
+                
+                <!-- Resume Upload -->
+                <div class="glass-card upload-card">
+                    <div class="card-header">
+                        <span class="card-icon">📎</span>
+                        <h3 class="card-title">Upload Resumes</h3>
+                    </div>
+                    
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-icon">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                        </div>
+                        <p class="upload-text">Drag & drop resumes here</p>
+                        <p class="upload-subtext">or click to browse</p>
+                        <p class="upload-formats">Supports PDF, DOCX, JPG, PNG</p>
+                        <input type="file" id="fileInput" multiple accept=".pdf,.docx,.jpg,.jpeg,.png" hidden>
+                    </div>
+                    
+                    <div class="uploaded-files" id="uploadedFiles"></div>
+                    
+                    <button class="btn btn-primary btn-analyze" id="analyzeBtn" disabled>
+                        <span class="btn-glow"></span>
+                        <span class="btn-text">Analyze Now</span>
+                        <span class="btn-icon">🚀</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Progress Bar -->
+            <div class="progress-container" id="progressContainer" style="display: none;">
+                <div class="progress-header">
+                    <span class="progress-label" id="progressLabel">Processing...</span>
+                    <span class="progress-percentage" id="progressPercentage">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                    <div class="progress-glow"></div>
+                </div>
+                <div class="progress-steps" id="progressSteps">
+                    <div class="progress-step">
+                        <div class="step-icon">📄</div>
+                        <div class="step-label">Extracting Text</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-icon">🔍</div>
+                        <div class="step-label">BM25 Analysis</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-icon">🧠</div>
+                        <div class="step-label">FAISS Matching</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-icon">🤖</div>
+                        <div class="step-label">Gemini AI</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Results Section -->
+        <section id="results" class="results-section" data-scroll-section style="display: none;">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Analysis Results</h2>
+                    <p class="section-subtitle">AI-powered candidate ranking and insights</p>
+                </div>
+                <button class="btn btn-primary" id="viewAnalyticsBtn" data-analytics-btn>
+                    <span class="btn-icon">📊</span>
+                    <span class="btn-text">View Analytics Dashboard</span>
+                </button>
+            </div>
+
+            <div class="results-grid" id="resultsGrid">
+                <!-- Results will be dynamically inserted here -->
+            </div>
+
+            <!-- Chart Section -->
+            <div class="chart-container glass-card">
+                <div class="card-header">
+                    <span class="card-icon">📊</span>
+                    <h3 class="card-title">Score Comparison</h3>
+                </div>
+                <canvas id="scoresChart"></canvas>
+            </div>
+        </section>
+        
+        <!-- Insights Panel -->
+        <section id="insights" class="insights-section" data-scroll-section style="display: none;">
+            <div class="glass-card insights-card">
+                <div class="card-header">
+                    <span class="card-icon">🤖</span>
+                    <h3 class="card-title">AI Observations</h3>
+                </div>
+                <div class="insights-content" id="insightsContent">
+                    <!-- AI insights will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture Section -->
+        <section id="architecture" class="architecture-section" data-scroll-section>
+            <div class="section-header">
+                <h2 class="section-title">System Architecture</h2>
+                <p class="section-subtitle">Triple-model ensemble for maximum accuracy</p>
+            </div>
+            
+            <div class="architecture-grid">
+                <div class="arch-card glass-card">
+                    <div class="arch-icon">🔍</div>
+                    <h3 class="arch-title">BM25</h3>
+                    <p class="arch-weight">30% Weight</p>
+                    <p class="arch-description">Lexical keyword matching for exact skill identification</p>
+                </div>
+                
+                <div class="arch-card glass-card">
+                    <div class="arch-icon">🧠</div>
+                    <h3 class="arch-title">FAISS</h3>
+                    <p class="arch-weight">30% Weight</p>
+                    <p class="arch-description">Semantic similarity using vector embeddings</p>
+                </div>
+                
+                <div class="arch-card glass-card">
+                    <div class="arch-icon">🤖</div>
+                    <h3 class="arch-title">Gemini AI</h3>
+                    <p class="arch-weight">40% Weight</p>
+                    <p class="arch-description">Contextual understanding and intelligent recommendations</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer id="footer" class="glass-footer" data-scroll-section>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">Securitix</h4>
+                    <p class="footer-text">AI-Powered Resume Analyzer</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Links</h4>
+                    <a href="#" class="footer-link">Documentation</a>
+                    <a href="#" class="footer-link">GitHub</a>
+                    <a href="#" class="footer-link">API Reference</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Contact</h4>
+                    <a href="#" class="footer-link">Support</a>
+                    <a href="#" class="footer-link">Email</a>
+                    <a href="#" class="footer-link">Twitter</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Securitix AI. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="js/particles.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
+
