@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🤖 Enhanced AI-Powered Resume Matcher v2.0
 
 A powerful NLP and AI tool that matches resumes against job descriptions using **Google Cloud Vision API**, **Gemini AI**, **BM25**, and **FAISS** for comprehensive candidate evaluation.
@@ -268,3 +269,41 @@ Built with:
 **Last Updated**: 2025-10-30  
 **Status**: Production Ready 🚀
 
+=======
+#  AI Resume Ranker
+
+An AI-powered Resume Analyzer designed for technical hiring teams.  
+Built with **FastAPI**, **LangChain/NLP**, and a simple **web UI**, it allows users to:
+
+- Upload one or multiple resumes (PDF format)
+- Extract and parse text using NLP
+- Match candidate skills with job descriptions
+- Generate a Technical Match Score and summary insights
+
+---
+
+## 🧩 Tech Stack
+- **Backend:** FastAPI, Python, LangChain, PyPDF2
+- **Frontend:** HTML / JS (or React optional)
+- **AI Model:** GPT-based skill evaluation
+- **Deployment:** Render / Vercel / HuggingFace Spaces (optional)
+
+---
+
+## ⚡ Features
+- Resume upload and parsing
+- Bulk PDF processing
+- AI-powered skill extraction
+- Job description vs Resume comparison
+- Match score generation
+- Clean, responsive UI
+
+---
+
+## 🧪 Getting Started
+```bash
+git clone https://github.com/your-username/AI-Resume-Ranker.git
+cd AI-Resume-Ranker/backend
+pip install -r requirements.txt
+uvicorn main:app --reload
+>>>>>>> 0130a51f05ee1833dd0f3c986a9fb9493d0b2650
