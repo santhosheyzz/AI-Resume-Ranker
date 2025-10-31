@@ -155,6 +155,9 @@ The application uses a **triple-model ensemble** approach:
 - 🟡 **50-69%**: Moderate Match - Consider for interview
 - 🔴 **0-49%**: Weak Match - May not meet requirements
 
+##Frame Work
+![alt text](https://github.com/santhosheyzz/AI-Resume-Ranker/blob/74cf9334a76b96c0e0b2578f8268f82698a93052/Photos/Frame%20Work.png)
+
 ## 🎯 AI Analysis Components
 
 Gemini AI provides:
